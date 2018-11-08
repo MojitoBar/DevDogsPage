@@ -1,0 +1,14 @@
+body{
+    margin: 0rem;
+}
+
+
+nav a{
+    text-decoration: none;
+    color: black;
+}
+
+.nav_a{
+    float: right;
+    margin-left: 1rem;
+}
