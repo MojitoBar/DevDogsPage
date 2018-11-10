@@ -1,5 +1,7 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
+var moment = require('moment');
 
 var mysql = require('mysql');
 var conn = mysql.createConnection({
@@ -8,6 +10,8 @@ var conn = mysql.createConnection({
     password: '111111',
     database: 'devdogs'
 });
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('view engine', 'jade');
 app.set('views', './views')
@@ -25,6 +29,26 @@ app.get('/Notice', function(req, res){
             console.log(err);
         }
         res.render("notice", {datas:datas});
+    })
+})
+
+app.get('/Notice/add', function(req, res){
+    res.render("Notice_add")
+})
+
+app.post('/Notice/add', function(req, res){
+    var title = req.body.title;
+    var content = req.body.content;
+    var write_time = moment().format("YY:MM:DD");
+    var sql = 'INSERT INTO notice (title, content, write_time) VALUES(?, ?, ?)';
+    conn.query(sql, [title, content, write_time], function(err, rows){
+        if(err){
+            console.log(err);
+            res.status(500).send('Internal Server Error');
+        }
+        else{
+            res.redirect('/Notice/' + rows.insertId);
+        }
     })
 })
 

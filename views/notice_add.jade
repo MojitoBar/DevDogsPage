@@ -1,0 +1,15 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+
+        link(rel="stylesheet", href="/notice.css", type="text/css")
+    body
+        a(href='/Notice' class='title') Test Notice
+        hr
+        form(action="/Notice/add" method='post')
+            input(type="text" placehoder='title' name='title')
+            br
+            textarea(type="textarea" placehoder='context' name='content')
+            br
+            input(type="submit")
