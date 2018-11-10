@@ -3,6 +3,10 @@ body{
 }
 
 
+nav{
+    margin: 2rem;
+}
+
 nav a{
     text-decoration: none;
     color: black;
