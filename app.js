@@ -24,8 +24,18 @@ app.get('/Notice', function(req, res){
         if(err){
             console.log(err);
         }
-        console.log(datas);
         res.render("notice", {datas:datas});
+    })
+})
+
+app.get('/Notice/:id', function(req, res){
+    var sql = 'SELECT * FROM notice where id=?';
+    var id = req.params.id;
+    conn.query(sql, [id], function(err, data, fields){
+        if(err){
+            console.log(err);
+        }
+        res.render("notice_id", {data:data[0]});
     })
 })
 

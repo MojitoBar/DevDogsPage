@@ -2,8 +2,9 @@ doctype html
 html
     head
         meta(charset='utf-8')
+        link(rel="stylesheet", href="/notice.css", type="text/css")
     body
-        a(href='/') Test Notice
+        a(href='/' class='title') Test Notice
         hr
         table(border='1')
             tr
@@ -16,7 +17,8 @@ html
             -for(var i=0; i<datas.length; i++)
                 tr
                     td= i+1
-                    td= datas[i].title
+                    td 
+                        a(href='/Notice/' + datas[i].id)= datas[i].title
                     td= datas[i].writer
                     td= datas[i].write_time.toLocaleDateString()
                     td= datas[i].views
