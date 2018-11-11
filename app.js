@@ -63,7 +63,18 @@ app.get('/Notice/:id', function (req, res) {
     })
 })
 
-// app.post('')
+app.post('/Notice/delete/:id', function (req, res){
+    var id = req.params.id;
+    var sql = 'DELETE FROM notice WHERE id=?';
+    conn.query(sql, [id], function(err, result){
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.redirect('/Notice/');
+        }
+    })
+})
 
 app.listen(3000, function (req, res) {
     console.log('Connected 3000 Port!');
