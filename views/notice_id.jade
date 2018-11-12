@@ -13,5 +13,7 @@ html
         hr
         p= data.content
 
+        form(action="edit/"+ data.id method='get')
+            input(type="submit" value="edit")
         form(action="delete/"+ data.id method='post')
             input(type="submit" value="delete" Onclick="return ConfirmDelete()")
