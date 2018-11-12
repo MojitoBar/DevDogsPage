@@ -14,6 +14,8 @@ html
         h1= '제목: ' + data.title
         p= '내용: ' + data.content
 
+        a(href="/download/"+data.user_file)=data.user_file
+        br
         a(href="edit/"+data.id) edit
         form(action="delete/"+ data.id method='post')
             input(type="submit" value="delete" Onclick="return ConfirmDelete()")

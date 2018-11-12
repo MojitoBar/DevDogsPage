@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var moment = require('moment');
+var fs = require('fs');
 
 // 파일 관련 모튤
 var multer = require('multer');
@@ -9,15 +10,7 @@ var multer = require('multer');
 // 파일 저장위치와 파일이름 설정
 var storage = multer.diskStorage({
     destination: function(req, file, cb){
-        // 파일이 이미지 파일이면
-        if(file.mimetype == "image/jpeg" || file.mimetype == "image/jpg" || file.mimetype == "image/png"){
-            console.log('이미지 파일입니다.');
-            cb(null, 'uploads/images');
-        }
-        else if(file.mimetype == "application/pdf" || file.mimetype == "application/txt" || file.mimetype == "application/octet-stream"){
-            console.log('텍스트 파일입니다.');
-            cb(null, 'uploads/texts');
-        }
+        cb(null, 'uploads');
     },
     // 파일 이름 설정
     filename: function(req, file, cb){
@@ -129,6 +122,13 @@ app.post('/Notice/edit/:id', function(req, res){
             res.redirect('/Notice/' + id);
         }
     });
+})
+
+app.get('/download/uploads/:name', function(req, res){
+    var filename = req.params.name;
+
+    var file = __dirname + '/uploads/' + filename;
+    res.download(file);
 })
 
 app.listen(3000, function (req, res) {
