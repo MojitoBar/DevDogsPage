@@ -53,32 +53,56 @@ app.get('/Notice/add', function (req, res) {
     res.render("Notice_add")
 })
 
-app.post('/Notice/add', upload.single("fileupload"), function (req, res, next) {
+app.post('/Notice/add', upload.array("fileupload[]"), function (req, res, next) {
     var title = req.body.title;
     var content = req.body.content;
     var write_time = moment().format("YY:MM:DD");
-    var file_path = req.file.path;
-    var sql = 'INSERT INTO notice (title, content, write_time, user_file) VALUES(?, ?, ?, ?)';
-    conn.query(sql, [title, content, write_time, file_path], function (err, rows) {
+    var file_path = req.files;
+    var sql = 'INSERT INTO notice (title, content, write_time, files) VALUES(?, ?, ?, ?)';
+    conn.query(sql, [title, content, write_time, file_path.length], function (err, rows) {
         if (err) {
             console.log(err);
             res.status(500).send('Internal Server Error');
         }
         else {
+            var sql = 'INSERT INTO uploadfiles (filePath, noticeId) VALUES(?, ?)';
+            for(var i=0; i<file_path.length; i++){
+                conn.query(sql, [file_path[i].path, rows.insertId], function(err, rows){
+                    if (err){
+                        console.log(err);
+                    }
+                    else{
+                    }
+                })
+            }
             res.redirect('/Notice/' + rows.insertId);
         }
     })
 })
 
 app.get('/Notice/:id', function (req, res) {
-    var sql = 'SELECT * FROM notice where id=?';
+    var sql = 'select * from notice where id=?';
     var id = req.params.id;
-    conn.query(sql, [id], function (err, data, fields) {
-        if (err) {
+    conn.query(sql, [id], function (err, data){
+        if(err){
             console.log(err);
         }
-        res.render("notice_id", { data: data[0] });
+        else{
+            if(data[0].files > 0){
+                var sql = 'select * from notice join uploadfiles on notice.id = uploadfiles.noticeId WHERE notice.id=?';
+                conn.query(sql, [id], function (err, data, fields) {
+                    if (err) {
+                        console.log(err);
+                    }
+                    res.render("notice_id", { data: data });
+                })
+            }
+            else{
+                res.render("notice_id", { data: data });
+            }
+        }
     })
+    
 })
 
 app.post('/Notice/delete/:id', function (req, res){
@@ -90,6 +114,7 @@ app.post('/Notice/delete/:id', function (req, res){
         }
         else{
             res.redirect('/Notice/');
+
         }
     })
 })

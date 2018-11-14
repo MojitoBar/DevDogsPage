@@ -11,11 +11,17 @@ html
     body
         a(href='/Notice' class='title') Test Notice
         hr
-        h1= '제목: ' + data.title
-        p= '내용: ' + data.content
-
-        a(href="/download/"+data.user_file)=data.user_file
-        br
-        a(href="edit/"+data.id) edit
-        form(action="delete/"+ data.id method='post')
-            input(type="submit" value="delete" Onclick="return ConfirmDelete()")
+        h1= '제목: ' + data[0].title
+        p= '내용: ' + data[0].content
+        -if(data[0].files > 0)
+            -for(var i=0; i<data.length; i++)
+                a(href="/download/"+data[i].filePath)=data[i].filePath
+                br
+            br
+            a(href="edit/"+data[0].noticeId) edit
+            form(action="delete/"+ data[0].noticeId method='post')
+                input(type="submit" value="delete" Onclick="return ConfirmDelete()")
+        -else
+            a(href="edit/"+data[0].id) edit
+            form(action="delete/"+ data[0].id method='post')
+                input(type="submit" value="delete" Onclick="return ConfirmDelete()")
