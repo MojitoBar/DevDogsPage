@@ -107,6 +107,17 @@ app.get('/Notice/:id', function (req, res) {
 
 app.post('/Notice/delete/:id', function (req, res){
     var id = req.params.id;
+    var sql = 'SELECT * FROM uploadfiles WHERE noticeId=?';
+    conn.query(sql, [id], function(err, result){
+        if(err){
+            console.log(err);
+        }
+        else{
+            for(var i=0; i<result.length; i++){
+                fs.unlinkSync(result[i].filePath);
+            }
+        }
+    })
     var sql = 'DELETE FROM notice WHERE id=?';
     conn.query(sql, [id], function(err, result){
         if(err){
@@ -114,7 +125,6 @@ app.post('/Notice/delete/:id', function (req, res){
         }
         else{
             res.redirect('/Notice/');
-
         }
     })
 })
