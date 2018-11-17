@@ -55,9 +55,16 @@ nav a{
 
 .index_explain{
     font-family: 'NANUMSQUARER';
+    font-weight: bold;
     padding-top: 4rem;
     padding-right: 14rem;
     float: right;
+    color: rgb(60, 60, 60);
+}
+
+.index_explain p a{
+    text-decoration-color: black;
+    color: black;
 }
 
 .index_explain p{

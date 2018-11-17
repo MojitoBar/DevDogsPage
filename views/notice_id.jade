@@ -9,8 +9,13 @@ html
             };
 
     body
-        a(href='/Notice' class='title') Test Notice
-        hr
+        nav
+            a(href="/")
+                img(class="index_icon" src="devdogsicon.png" alt="index_icon")
+            a(href="/Member" class="nav_a") Member
+            a(href="/Notice" class="nav_a") Notice
+            a(href="/About" class="nav_a") About
+
         h1= '제목: ' + data[0].title
         p= '내용: ' + data[0].content
         -if(data[0].files > 0)

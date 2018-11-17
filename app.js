@@ -50,7 +50,7 @@ app.get('/Notice', function (req, res) {
 })
 
 app.get('/Notice/add', function (req, res) {
-    res.render("Notice_add")
+    res.render("notice_add");
 })
 
 app.post('/Notice/add', upload.array("fileupload[]"), function (req, res, next) {
