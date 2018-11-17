@@ -7,12 +7,12 @@ html
     body
         a(href='/Notice' class='title') Test Notice
         hr
-        form(action="/Notice/edit/"+notice.id method='post')
+        form(action="/Notice/edit/"+notice.id method='post' enctype='multipart/form-data')
             input(type="text" placehoder='title' name='title' value=notice.title)
             br
             textarea(type="textarea" placehoder='context' name='content')
                 =notice.content
             br
-            input(type='file' name='fileupload')
+            input(multiple='multiple' type='file' name='fileupload[]')
             br
             input(type="submit")

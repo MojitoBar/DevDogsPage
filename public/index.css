@@ -1,18 +1,35 @@
+@font-face{
+    font-family: 'NanumSquareR';
+    src: url(/NanumSquareR.ttf) format('truetype');
+}
+
 body{
+    font-family: 'NanumSquareR';
     margin: 0rem;
+    background-color: rgb(253,253,253);
 }
 
 
 nav{
-    margin: 2rem;
+    padding: 2rem;
+    padding-right: 5rem;
+    padding-left: 5rem;
+    color: rgb(29, 29, 29);
+    font-size: 1.2rem;
 }
 
 nav a{
     text-decoration: none;
-    color: black;
+    color: rgb(29, 29, 29);
+    font-weight: bold;
 }
 
 .nav_a{
     float: right;
     margin-left: 1rem;
+    margin-top: 1.3rem;
+}
+
+.index_icon{
+    width: 12rem;
 }
