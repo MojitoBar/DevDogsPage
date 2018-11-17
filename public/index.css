@@ -1,12 +1,16 @@
 @font-face{
-    font-family: 'NanumSquareR';
-    src: url(/NanumSquareR.ttf) format('truetype');
+    font-family: 'NANUMSQUARER';
+    src: url(/NANUMSQUARER.TTF) format('truetype');
+}
+
+@font-face{
+    font-family: 'NANUMSQUAREL';
+    src: url(/NANUMSQUAREL.TTF) format('truetype');
 }
 
 body{
-    font-family: 'NanumSquareR';
+    font-family: 'NANUMSQUARER';
     margin: 0rem;
-    background-color: rgb(253,253,253);
 }
 
 
@@ -26,10 +30,37 @@ nav a{
 
 .nav_a{
     float: right;
-    margin-left: 1rem;
+    margin-left: 3rem;
     margin-top: 1.3rem;
 }
 
 .index_icon{
     width: 12rem;
+}
+
+.index_content{
+    font-family: 'NANUMSQUAREL';
+    font-size: 5.5rem;
+    padding-top: 7rem;
+    padding-left: 14rem;
+}
+
+.index_content p{
+    margin: 0;
+}
+
+.index_content_color{
+    color: rgb(255, 32, 69);
+}
+
+.index_explain{
+    font-family: 'NANUMSQUARER';
+    padding-top: 4rem;
+    padding-right: 14rem;
+    float: right;
+}
+
+.index_explain p{
+    margin: 0;
+    margin-top: 0.2rem;
 }
