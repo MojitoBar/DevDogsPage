@@ -1,8 +1,15 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var app = express();
 var moment = require('moment');
 var fs = require('fs');
+var favicon = require('serve-favicon');
+var app = express();
+
+// 정적인 파일을 불러오는 코드 (public 폴더를 기준으로 함)
+app.use(express.static('public'));
+
+// favicon 설정 관련
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 // 파일 관련 모튤
 var multer = require('multer');
@@ -32,8 +39,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('view engine', 'jade');
 app.set('views', './views')
-// 정적인 파일을 불러오는 코드 (public 폴더를 기준으로 함)
-app.use(express.static('public'));
+
 
 app.get('/', function (req, res) {
     res.render("index");
