@@ -11,7 +11,7 @@ html
     body
         nav
             a(href="/")
-                img(class="index_icon" src="devdogsicon.png" alt="index_icon")
+                img(class="index_icon" src="/devdogsicon.png" alt="index_icon")
             a(href="/Member" class="nav_a") Member
             a(href="/Notice" class="nav_a") Notice
             a(href="/About" class="nav_a") About
@@ -20,7 +20,7 @@ html
         p= '내용: ' + data[0].content
         -if(data[0].files > 0)
             -for(var i=0; i<data.length; i++)
-                a(href="/download/"+data[i].filePath)=data[i].filePath
+                a(href="/download/"+data[i].filePath)=data[i].filePath  
                 br
             br
             a(href="edit/"+data[0].noticeId) edit
