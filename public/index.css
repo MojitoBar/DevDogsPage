@@ -50,15 +50,14 @@ nav a{
 }
 
 .index_content_color{
-    color: rgb(255, 32, 69);
+    color: #ff1e44
 }
 
 .index_explain{
     font-family: 'NANUMSQUARER';
     font-weight: bold;
     padding-top: 4rem;
-    padding-right: 14rem;
-    float: right;
+    margin-left: 60%;
     color: rgb(60, 60, 60);
 }
 
@@ -70,4 +69,25 @@ nav a{
 .index_explain p{
     margin: 0;
     margin-top: 0.2rem;
+}
+
+.index_footer{
+    margin-top: 5rem;
+    text-align: center;
+    background-color: rgb(43, 43, 43);
+    color: white;
+}
+
+.index_footer div{
+    padding: 2rem;
+}
+
+.index_Last{
+    text-align: center;
+    color: white;
+    background-color: hsl(350, 100%, 60%);
+}
+
+.index_Last div{
+    padding: 0.4rem;
 }
