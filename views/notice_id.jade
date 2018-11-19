@@ -16,18 +16,29 @@ html
             a(href="/Member" class="nav_a") Member
             a(href="/Notice" class="nav_a") Notice
             a(href="/About" class="nav_a") About
-
-        h1= '제목: ' + data[0].title
-        p= '내용: ' + data[0].content
-        -if(data[0].files > 0)
-            -for(var i=0; i<data.length; i++)
-                a(href="/download/"+data[i].filePath)=data[i].filePath  
+        div(class="notice_view")
+            h1= data[0].title
+            div(class="notice_detail_data")
+                span= data[0].writer
+                span= data[0].write_time.getFullYear() + "년 " + (data[0].write_time.getMonth()+1) + "월 " + data[0].write_time.getDate() + "일"
+            hr
+            textarea(class="notice_content" cols="20" rows="20" readonly)=data[0].content + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            -if(data[0].files > 0)
+                -for(var i=0; i<data.length; i++)
+                    a(href="/download/"+data[i].filePath)=data[i].filePath  
+                    br
                 br
-            br
-            a(href="edit/"+data[0].noticeId) edit
-            form(action="delete/"+ data[0].noticeId method='post')
-                input(type="submit" value="delete" Onclick="return ConfirmDelete()")
-        -else
-            a(href="edit/"+data[0].id) edit
-            form(action="delete/"+ data[0].id method='post')
-                input(type="submit" value="delete" Onclick="return ConfirmDelete()")
+                a(href="edit/"+data[0].noticeId) edit
+                form(action="delete/"+ data[0].noticeId method='post')
+                    input(class="notice_delete_button" type="submit" value="delete" Onclick="return ConfirmDelete()")
+            -else
+                a(href="edit/"+data[0].id) edit
+                form(action="delete/"+ data[0].id method='post')
+                    input(class="notice_delete_button" type="submit" value="delete" Onclick="return ConfirmDelete()")
+
+        div(class="index_aperture")
+
+        div(class="index_footer")
+            div(class="index_footer_text") Copyright © 2019 DevDogs. All rights reserved.
+            div(class="index_Last")
+                div Create & Design by J

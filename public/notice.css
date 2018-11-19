@@ -56,13 +56,15 @@ td a{
 table{
     border-collapse: collapse;
     margin: auto;
-    margin-top: 5rem;
+    margin-top: 1rem;
     width: 70%;
 }
 
 td{
     border: 1px solid lightgray;
     padding: 0.5rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
 }
 
 .table_hover:hover{
@@ -106,4 +108,51 @@ td{
     font-size: 1.1rem;
     margin-bottom: 0.4rem;
     margin-top: 0.4rem;
+}
+
+.index_footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    background-color: rgb(43, 43, 43);
+    color: white;
+}
+
+.index_footer_text{
+    padding: 2rem;
+}
+
+.index_Last{
+    text-align: center;
+    color: white;
+    background-color: #ff3255;
+}
+
+.index_Last div{
+    padding: 0.4rem;
+}
+
+.index_aperture{
+    height: 4rem;
+}
+
+.notice_choice{
+    margin: auto;
+    margin-top: 3rem;
+    width: 70%;
+}
+
+.notice_choice button{
+    font-family: 'NANUMSQUARER';
+    font-size: 1.1rem;
+    background-color: white;
+    padding: 0.6rem;
+    margin-right: 0.5rem;
+    border-radius: 0.1rem;
+    border: 0;
+}
+
+.notice_choice button:hover{
+    cursor: pointer;
 }

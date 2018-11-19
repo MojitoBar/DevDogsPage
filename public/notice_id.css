@@ -13,6 +13,9 @@ body{
     margin: 0rem;
 }
 
+h1{
+    margin-bottom: 0.1rem;
+}
 
 nav{
     padding: 2rem;
@@ -45,3 +48,70 @@ a{
     text-decoration: none;
     color: black;
 }
+
+.notice_view{
+    width: 70%;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.notice_detail_data span{
+    margin-right: 1rem;
+}
+
+.notice_delete_button{
+    background-color: white;
+    font-family: 'NANUMSQUARER';
+    font-size: 1rem;
+    border: 0;
+}
+
+.notice_view .notice_content{
+    font-size: 1.2rem;
+    font-family: 'NANUMSQUARER';
+    min-height: 30rem;
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+    background-color: #fff6fb;
+    border: 1px solid lightgray;
+    border-radius: 0.5rem;
+    overflow: auto;
+    resize: none;
+    line-height: 1.6rem;
+}
+
+hr{
+    border-color: rgba(255, 255, 255, 0.5)
+}
+
+/* footer start */
+.index_footer{
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    background-color: rgb(43, 43, 43);
+    color: white;
+}
+
+.index_footer_text{
+    padding: 2rem;
+}
+
+.index_Last{
+    text-align: center;
+    color: white;
+    background-color: hsl(350, 100%, 60%);
+}
+
+.index_Last div{
+    padding: 0.4rem;
+}
+
+.index_aperture{
+    height: 4rem;
+}
+
+/* footer end */

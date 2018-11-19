@@ -41,7 +41,7 @@ nav a{
 .index_content{
     font-family: 'NANUMSQUAREL';
     font-size: 5.5rem;
-    padding-top: 7rem;
+    padding-top: 6rem;
     padding-left: 14rem;
 }
 
@@ -72,13 +72,15 @@ nav a{
 }
 
 .index_footer{
-    margin-top: 5rem;
+    position: relative;
+    width: 100%;
+    bottom: 0;
     text-align: center;
     background-color: rgb(43, 43, 43);
     color: white;
 }
 
-.index_footer div{
+.index_footer_text{
     padding: 2rem;
 }
 
@@ -90,4 +92,8 @@ nav a{
 
 .index_Last div{
     padding: 0.4rem;
+}
+
+.index_aperture{
+    height: 4rem;
 }
