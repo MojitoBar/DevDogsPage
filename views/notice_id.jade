@@ -17,12 +17,14 @@ html
             a(href="/Notice" class="nav_a") Notice
             a(href="/About" class="nav_a") About
         div(class="notice_view")
-            h1= data[0].title
+            h1="[공지] " + data[0].title
             div(class="notice_detail_data")
+                img(class="userIcon" src="/userIcon.png", alt="userIcon")
                 span= data[0].writer
+                img(class="clockIcon" src="/clockIcon.png", alt="clockIcon")
                 span= data[0].write_time.getFullYear() + "년 " + (data[0].write_time.getMonth()+1) + "월 " + data[0].write_time.getDate() + "일"
             hr
-            textarea(class="notice_content" cols="20" rows="20" readonly)=data[0].content + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            div(class="notice_content" cols="20" rows="20")=data[0].content
             -if(data[0].files > 0)
                 -for(var i=0; i<data.length; i++)
                     a(href="/download/"+data[i].filePath)=data[i].filePath  
