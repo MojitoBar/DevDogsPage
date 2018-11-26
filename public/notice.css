@@ -57,7 +57,7 @@ table{
     border-collapse: collapse;
     margin: auto;
     margin-top: 1rem;
-    width: 70%;
+    width: 65%;
 }
 
 td{
@@ -83,7 +83,7 @@ td{
     font-size: 0.9rem;
     float: right;
     margin-top: 1%;
-    margin-right: 15%;
+    margin-right: 17.3%;
     padding: 0.3rem;
     padding-right: 0.5rem;
     padding-left: 0.5rem;
@@ -140,7 +140,7 @@ td{
 .notice_choice{
     margin: auto;
     margin-top: 3rem;
-    width: 70%;
+    width: 65%;
 }
 
 .notice_choice button{

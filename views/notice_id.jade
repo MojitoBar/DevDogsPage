@@ -8,7 +8,6 @@ html
             function ConfirmDelete() {
                 return confirm("삭제하시겠습니까?");
             };
-
     body
         nav
             a(href="/")
@@ -17,7 +16,7 @@ html
             a(href="/Notice" class="nav_a") Notice
             a(href="/About" class="nav_a") About
         div(class="notice_view")
-            h1="[공지] " + data[0].title
+            h1= data[0].title
             div(class="notice_detail_data")
                 img(class="userIcon" src="/userIcon.png", alt="userIcon")
                 span= data[0].writer
