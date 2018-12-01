@@ -77,8 +77,6 @@ app.post('/Notice/add', upload.array("fileupload[]"), function (req, res, next) 
                     if (err){
                         console.log(err);
                     }
-                    else{
-                    }
                 })
             }
             res.redirect('/Notice/' + rows.insertId);
@@ -108,7 +106,6 @@ app.get('/Notice/:id', function (req, res) {
             }
         }
     })
-    
 })
 
 app.post('/Notice/delete/:id', function (req, res){
@@ -148,21 +145,48 @@ app.get('/Notice/edit/:id', function(req, res){
     })
 })
 
-app.post('/Notice/edit/:id', function(req, res){
+app.post('/Notice/edit/:id', upload.array("fileupload[]"), function(req, res){
     var id = req.params.id;
     var title = req.body.title;
     var content = req.body.content;
-    var write_time = moment().format("YY:MM:DD");
-    var sql = 'UPDATE notice SET title=?, content=?, write_time=? WHERE id=?'
-
-    conn.query(sql, [title, content, write_time, id], function(err, result){
-        if(err){
+    var file_path = req.files;
+    var sql = 'UPDATE notice SET title=?, content=?, files=? WHERE id=?';
+    conn.query(sql, [title, content, file_path.length, id], function (err, rows) {
+        if (err) {
             console.log(err);
+            res.status(500).send('Internal Server Error');
         }
-        else{
+        else {
+            var sql = 'SELECT * FROM uploadfiles WHERE noticeId=?';
+            conn.query(sql, [id], function(err, result){
+                if(err){
+                    console.log(err);
+                }
+                else{
+                    console.log(result[0]);
+                    for(var i=0; i<result.length; i++){
+                        fs.unlinkSync(result[i].filePath);
+                    }
+                }
+            })
+
+            var sql = 'DELETE FROM uploadfiles WHERE noticeId=?'
+            conn.query(sql, [id], function(err, rows){
+                if(err){
+                    console.log(err);
+                }
+            })
+            var sql = 'INSERT INTO uploadfiles (filePath, noticeId) VALUES(?, ?)';
+            for(var i=0; i<file_path.length; i++){
+                conn.query(sql, [file_path[i].path, id, rows.insertId], function(err, rows){
+                    if (err){
+                        console.log(err);
+                    }
+                })
+            }
             res.redirect('/Notice/' + id);
         }
-    });
+    })
 })
 
 app.get('/download/uploads/:name', function(req, res){
