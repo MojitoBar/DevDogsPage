@@ -24,19 +24,21 @@ html
                 span= data[0].write_time.getFullYear() + "년 " + (data[0].write_time.getMonth()+1) + "월 " + data[0].write_time.getDate() + "일"
             hr
             div(class="notice_content" cols="20" rows="20")=data[0].content
-            -if(data[0].files > 0)
-                -for(var i=0; i<data.length; i++)
-                    a(href="/download/"+data[i].filePath)=data[i].filePath  
-                    br
-                br
-                a(href="edit/"+data[0].noticeId) edit
-                form(action="delete/"+ data[0].noticeId method='post')
-                    input(class="notice_delete_button" type="submit" value="delete" Onclick="return ConfirmDelete()")
-            -else
-                a(href="edit/"+data[0].id) edit
-                form(action="delete/"+ data[0].id method='post')
-                    input(class="notice_delete_button" type="submit" value="delete" Onclick="return ConfirmDelete()")
 
+            div(class="notice_bottom")
+                -if(data[0].files > 0)
+                    -for(var i=0; i<data.length; i++)
+                        a(href="/download/"+data[i].filePath)=data[i].filePath  
+                        br
+                    br
+                    form(action="delete/"+ data[0].noticeId method='post')
+                        input(class="notice_delete_button" type="submit" value="delete" Onclick="return ConfirmDelete()")
+                    a(class="notice_edit_button" href="edit/"+data[0].noticeId) edit
+                -else
+                    form(action="delete/"+ data[0].id method='post')
+                        input(class="notice_delete_button" type="submit" value="delete" Onclick="return ConfirmDelete()")
+                    a(class="notice_edit_button" href="edit/"+data[0].id) edit
+                    a(class="notice_back_button" href="/Notice") 목록으로
         div(class="index_aperture")
 
         div(class="index_footer")

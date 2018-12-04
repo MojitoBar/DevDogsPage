@@ -69,6 +69,20 @@ a{
     font-family: 'NANUMSQUARER';
     font-size: 1rem;
     border: 0;
+    float: right;
+    padding: 0;
+}
+
+.notice_back_button{
+    margin-left: 45%;
+}
+
+.notice_edit_button {
+    float: right;
+}
+
+.notice_bottom{
+    margin-top: 5%;
 }
 
 .notice_view .notice_content{
